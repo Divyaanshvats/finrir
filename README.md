@@ -28,3 +28,45 @@ Ensure Python 3.8+ is installed. Install dependencies via:
 
 ```bash
 pip install -r requirements.txt
+
+
+
+
+
+---
+
+### 📄 `eval_static.md`
+
+```markdown
+# Static Evaluation – Base vs Fine-Tuned Model Outputs
+
+## Prompt 1: Create a new Git branch and switch to it.
+❌ No CLI output
+**Score:** 0
+
+## Prompt 2: Compress the folder reports into reports.tar.gz
+Python code block for `tarfile` module
+**Score:** 1
+
+## Prompt 3: List all Python files
+❌ No response
+**Score:** 0
+
+## Prompt 4: Set up virtualenv and install requests
+Returned `import requests` code
+**Score:** 0
+
+## Prompt 5: Fetch top 10 lines from output.log
+Incomplete Python snippet
+**Score:** 1
+
+## Prompt 6: Find 'error' in `.log` files
+Python logic using `glob` and `open()`
+**Score:** 1
+
+## Prompt 7: Delete `.tmp` files with confirmation
+Returns: `rm -rf *.tmp`
+**Score:** 1
+
+**Total Score:** 5 / 14
+
