@@ -33,9 +33,9 @@ pip install -r requirements.txt
 
 
 
----
+#**eval_static.md**
 
-### 📄 `eval_static.md`
+###📄 `eval_static.md`
 
 ```markdown
 # Static Evaluation – Base vs Fine-Tuned Model Outputs
@@ -69,4 +69,54 @@ Returns: `rm -rf *.tmp`
 **Score:** 1
 
 **Total Score:** 5 / 14
+
+
+#**eval_dynamic.md**
+# Dynamic Evaluation – CLI Agent Dry-Run Outputs
+
+| Prompt | Dry-Run Command | Score |
+|--------|------------------|-------|
+| Git branch | ❌ None | 0 |
+| Compress reports | ❌ None (Python code) | 0 |
+| List Python files | ❌ None | 0 |
+| Virtualenv | ❌ Wrong response (requests code) | 0 |
+| Read 10 lines | ❌ Incomplete | 0 |
+| Grep errors | ❌ No dry-run (Python logic) | 0 |
+| Delete `.tmp` files | `rm -rf *.tmp` | 1
+
+**Total Score:** 1 / 14
+
+
+
+
+
+# AI/ML Internship Technical Task – Report
+
+## Data Collection
+All 150+ Q&A pairs were collected from Stack Overflow using the Stack Exchange API. No LLMs were used. Focused on Git, grep, tar, venv, file operations, and shell basics.
+
+## Model and Fine-Tuning
+- Base model: `microsoft/phi-2` (1.3B)
+- LoRA applied with `r=8`, `alpha=16`, `q_proj`/`v_proj`
+- Trained for 1 epoch using QLoRA + PEFT
+- Runtime: ~30 minutes on Colab T4
+- Max token length: 512
+- Dataset size: ~150 samples
+
+## Evaluation
+- Static Score: 5 / 14
+- Dynamic Score: 1 / 14
+- Strengths: Correct plan logic in Python
+- Weaknesses: Did not consistently return shell commands
+
+## Improvements
+1. Add shell-style formatting in training data (e.g., include `$` or `bash` tags).
+2. Train longer with more shell-focused prompts, especially edge-case and multi-line ones.
+
+## Conclusion
+Agent correctly interprets many instruction types, but shell-specific output formatting can be improved. Project adheres fully to Fenrir’s technical guidelines.
+
+
+
+
 
